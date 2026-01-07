@@ -1,0 +1,9 @@
+{
+  "Name": "Poster Wall",
+  "Id": "PosterWall",
+  "Version": "1.0.0",
+  "Description": "Generates a dynamic login splash poster wall for Jellyfin.",
+  "AssemblyFile": "PosterWall.dll",
+  "Configuration": true,
+  "EnableWebInterface": true
+}
