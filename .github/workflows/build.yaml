@@ -1,0 +1,29 @@
+name: Build Jellyfin Plugin
+
+on:
+  workflow_dispatch: # lets you run it manually
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build plugin
+        run: dotnet build PosterWall.csproj -c Release
+
+      - name: Upload DLL
+        uses: actions/upload-artifact@v4  # <-- updated to v4
+        with:
+          name: jellyfin-plugin-dll
+          path: bin/Release/net6.0/PosterWall.dll
